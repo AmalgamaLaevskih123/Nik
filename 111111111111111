@@ -1,0 +1,104 @@
+from tkinter import * 
+
+MyObject= Tk()
+MyObject.title ("LABORATORNIE ZANYATIA")
+MyObject.geometry("750x500")
+
+
+label1=Label(text="Введи х:").place(x=5,y=250)
+label2=Label(text="Введи у:").place(x=5,y=290)
+label3=Label(text="Введи текст:").place(x=200,y=250)
+label4=Label(text="Введи букву:").place(x=200,y=290)
+label5=Label(text="Введи пароль:").place(x=420,y=250)
+label6=Label(text="Введи имя пользователя:").place(x=420,y=290)
+label7=Label(text="Введи размерность пароля:").place(x=420,y=320)
+         
+
+def function1():
+        try:
+               h=float(x.get())
+               z=float(y.get())
+               label8=Label(text=(h/z))
+               label8.place(x=250,y=350) 
+        except ValueError:
+               label8=Label(text="К сожалению, один из аргументов не число")
+               label8.place(x=250,y=350) 
+        
+        except ZeroDivisionError:
+              label8=Label(text="Произошло деление на ноль давай по новой")
+              label8.place(x=250,y=350) 
+
+def function2():
+        bu=set(bukv.get())
+        te=tex.get()   
+        mylist=[]
+        
+        for _ in te:
+            if _ in bu:
+                mylist.append(_)
+        if len(mylist)!=0:
+           label8=Label(text=("В составе текста есть:",mylist))
+           label8.place(x=250,y=350) 
+           
+        else: 
+
+           label8=Label(text="В составе текста таких букв нет")
+           label8.place(x=250,y=350) 
+
+def function3():
+    pa=password.get()
+    n=name.get()
+    c=count.get()
+
+    if len(str(pa))>len(str(c)):
+        if pa.find(n)==-1:
+             label8=Label(text="Пароль нормальный даю добро на вход")
+             label8.place(x=250,y=350) 
+        else:  label8=Label(text="Юзер недотепа")
+        label8.place(x=250,y=350)
+    else:  label8=Label(text="Пароль слишком короткий")
+    label8.place(x=250,y=350)
+
+
+password=Entry(MyObject,width=20)
+password.place(x=600,y=250)
+
+name=Entry(MyObject,width=20)
+name.place(x=600,y=290)
+
+count=Entry(MyObject,width=20)
+count.place(x=600,y=320)
+
+x=Entry(MyObject,width=20)
+x.place(x=70,y=250)
+
+y=Entry(MyObject,width=20)
+y.place(x=70,y=290)
+
+bukv=Entry(MyObject,width=20)
+bukv.place(x=270,y=290)
+
+tex=Entry(MyObject,width=20)
+tex.place(x=270,y=250)
+
+button2=Button(MyObject,text='Работа 1',command=function1,
+              background="#555",
+              foreground="#ccc",
+              padx="20",
+              pady="8",
+              font="16").place(x=120,y=140)
+button3=Button(MyObject,text='Работа 2 ',command=function2,
+              background="#555",
+              foreground="#ccc",
+              padx="20",
+              pady="8",
+              font="16").place(x=320,y=140)
+button4=Button(MyObject,text='Работа 3',command=function3,
+              background="#555",
+              foreground="#ccc",
+              padx="20",
+              pady="8",
+              font="16").place(x=520,y=140)
+
+
+MyObject.mainloop()
