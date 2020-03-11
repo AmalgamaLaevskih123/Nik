@@ -1,0 +1,23 @@
+#task 1 
+print(len(str(int(input("Enter number")))))
+
+#task 2
+print((lambda x: {i: x.count(i) for i in x})(tuple(input('Enter number: ').strip())))
+
+#task 3
+print (max(input("enter text ").split(), key=len))
+
+
+#task 4 
+ip_class = [' Class A', 'Class B', 'Class C', 'CLass D', 'Class E']
+myfunction= lambda x: int(int(x) / 128) + int(int(x) / 192) + int(int(x) / 224) + int(int(x) / 240)
+
+T=True
+while T:
+
+    adress2=[ i if(0<=int(i)<=255) else None for i in input().split('.')]
+    if len(adress2) == 4 and not None in adress2:
+        print( ip_class[myfunction(adress2[0])])
+        T=False
+    else:
+        print('incorrect ip')
